@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="ch.zhaw.gpi.residentregister.entities" v="4.6.1" rws="_150939113079244" Pws="_150939113079244" cws="_150939113079244" persistenceUnitName="DEFAULT_PU" sm="false" xs="false" id="_150939113079243" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:entity compositePrimaryKeyClass="ResidentEntityPK" abs="false" class="ResidentEntity" v="true" xre="false" m="false" rootElement="_150939113079243" id="_150939113295745">
+        <jpa:ath>scep</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="firstName" ft="false" id="_150939113295747">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                    <jpa:si mi="1" ma="100"/>
+                </jpa:bv>
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="officialName" ft="false" id="_150939113295748">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                    <jpa:si mi="1" ma="100"/>
+                </jpa:bv>
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="int" v="true" xvt="" name="sex" ft="false" id="_150939113295749">
+                <jpa:des>1 (männlich), 2 (weiblich), 3 (unbestimmt)</jpa:des>
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                    <jpa:mi v="1"/>
+                    <jpa:ma v="3"/>
+                </jpa:bv>
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true" precision="0"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.sql.Date" v="true" xvt="" name="dateOfBirth" ft="false" id="_150939113295750">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic optional="true" attribute-type="boolean" v="true" xvt="" name="moveAllowed" ft="false" id="_150939113295751">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1514272307518262" connected-attribute-id="_1514272489692268" v="true" xvt="" name="residentRelationEntity" id="_1514272489691267">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:join-column name="RESIDENT_ID" rc="" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" v="true" xvt="" name="personId" ft="true" id="_150939113295746">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="ResidentEntity.findAll">
+            <jpa:query>Select e from ResidentEntity e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ResidentEntity.findByFirstName">
+            <jpa:query>Select r from ResidentEntity r where r.firstName=:firstName</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ResidentEntity.findByOfficialName">
+            <jpa:query>Select r from ResidentEntity r where r.officialName=:officialName</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ResidentEntity.findBySex">
+            <jpa:query>Select r from ResidentEntity r where r.sex=:sex</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ResidentEntity.findByDateOfBirth">
+            <jpa:query>Select r from ResidentEntity r where r.dateOfBirth=:dateOfBirth</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="ResidentEntity.findByMoveAllowed">
+            <jpa:query>Select r from ResidentEntity r where r.moveAllowed=:moveAllowed</jpa:query>
+        </jpa:nq>
+        <jpa:table name="Resident"/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ResidentRelationEntityPK" abs="false" class="ResidentRelationEntity" v="true" xre="false" m="false" rootElement="_150939113079243" id="_1514272307518262">
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:ath>Bekim</jpa:ath>
+        <jpa:attributes>
+            <jpa:one-to-many orp="false" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_150939113295745" connected-attribute-id="_1514272489691267" v="true" xvt="" name="residentEntities" id="_1514272489692268">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:one-to-many>
+            <jpa:id attribute-type="String" v="true" xvt="" name="id" ft="false" id="_1514272307518263">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:column name="ID" unique="true" nullable="false" insertable="true" updatable="true" length="255"/>
+                <jpa:generated-value/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="ResidentRelationEntity.findAll">
+            <jpa:query>Select e from ResidentRelationEntity e</jpa:query>
+        </jpa:nq>
+        <jpa:table name="RESIDENT_RELATION"/>
+    </jpa:entity>
+    <jpa:snp loc="BEFORE_PACKAGE" e="true">/**
+ * This file was generated by the Jeddict
+ */</jpa:snp>
+    <jpa:c>
+        <ct>java.util.List</ct>
+        <ct>java.util.Set</ct>
+        <ct>java.util.Map</ct>
+        <ct>java.util.Collection</ct>
+        <cit>java.util.ArrayList</cit>
+        <cit>java.util.LinkedList</cit>
+        <cit>java.util.HashSet</cit>
+        <cit>java.util.TreeSet</cit>
+        <cit>java.util.HashMap</cit>
+    </jpa:c>
+    <jpa:wsl>
+        <jpa:ws n="Main" id="_150939113079244">
+            <i ref="_1514272307518262" x="522" y="373"/>
+            <i ref="_150939113295745" x="268" y="255"/>
+        </jpa:ws>
+    </jpa:wsl>
+</jpa:entity-mappings>

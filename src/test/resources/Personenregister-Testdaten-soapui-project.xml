@@ -1,0 +1,1164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="46ce59b2-aaf7-42b9-b976-d2643920a1c9" activeEnvironment="Default" name="Personenregister Testdaten" resourceRoot="${projectDir}" soapui-version="5.4.0-EB" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="6c3c8059-a3f5-468c-a89e-8a8135f78852" wsaVersion="NONE" name="PersonenRegisterServiceServiceSoapBinding" type="wsdl" bindingName="{http://www.ech.ch/xmlns/eCH-0194/1}PersonenRegisterServiceServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8083/soap/PersonenRegisterService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8083/soap/PersonenRegisterService?wsdl"><con:part><con:url>http://localhost:8083/soap/PersonenRegisterService?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="PersonenRegisterServiceService" targetNamespace="http://www.ech.ch/xmlns/eCH-0194/1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.ech.ch/xmlns/eCH-0194/1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://www.ech.ch/xmlns/eCH-0194/1" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns6="http://www.ech.ch/xmlns/eCH-0010/5" xmlns:ns5="http://www.ech.ch/xmlns/eCH-0185/1" xmlns:ns4="http://www.ech.ch/xmlns/eCH-0011/8" xmlns:ns3="http://www.ech.ch/xmlns/eCH-0007/5" xmlns:ns2="http://www.ech.ch/xmlns/eCH-0044/4" xmlns:ns1="http://www.ech.ch/xmlns/eCH-0058/5">
+      <xs:import namespace="http://www.ech.ch/xmlns/eCH-0058/5"/>
+      <xs:import namespace="http://www.ech.ch/xmlns/eCH-0044/4"/>
+      <xs:import namespace="http://www.ech.ch/xmlns/eCH-0007/5"/>
+      <xs:import namespace="http://www.ech.ch/xmlns/eCH-0011/8"/>
+      <xs:import namespace="http://www.ech.ch/xmlns/eCH-0185/1"/>
+      <xs:import namespace="http://www.ech.ch/xmlns/eCH-0010/5"/>
+      <xs:element name="delivery" type="tns:deliveryType"/>
+      <xs:element name="extension">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="handleDelivery" type="tns:handleDelivery"/>
+      <xs:element name="handleDeliveryResponse" type="tns:handleDeliveryResponse"/>
+      <xs:complexType name="handleDelivery">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="delivery" type="tns:deliveryType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="deliveryType">
+        <xs:sequence>
+          <xs:element form="qualified" name="deliveryHeader" type="ns1:headerType"/>
+          <xs:element form="qualified" minOccurs="0" name="personMoveRequest" type="tns:personMoveRequest"/>
+          <xs:element form="qualified" minOccurs="0" name="personMoveResponse" type="tns:personMoveResponse"/>
+          <xs:element form="qualified" minOccurs="0" name="platformMoveIn" type="tns:platformMoveIn"/>
+          <xs:element form="qualified" minOccurs="0" name="platformMoveOut" type="tns:platformMoveOut"/>
+          <xs:element form="qualified" minOccurs="0" name="platformMoveData" type="tns:platformMoveData"/>
+          <xs:element form="qualified" minOccurs="0" name="platformMoveCommit" type="tns:platformMoveCommit"/>
+          <xs:element form="qualified" minOccurs="0" name="platformMoveInAddress" type="tns:platformMoveInAddress"/>
+          <xs:element form="qualified" minOccurs="0" name="positiveReport" type="tns:positiveReportType"/>
+          <xs:element form="qualified" minOccurs="0" name="negativeReport" type="tns:negativeReportType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="personMoveRequest">
+        <xs:sequence>
+          <xs:element form="qualified" name="personIdentification" type="ns2:personIdentificationType"/>
+          <xs:element form="qualified" name="municipality" type="ns3:swissMunicipalityType"/>
+          <xs:element minOccurs="0" ref="tns:extension"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="positiveReportType">
+        <xs:sequence>
+          <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="generalResponse" nillable="true" type="tns:infoType"/>
+          <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="personResponse" nillable="true">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element form="qualified" name="personIdentification" type="ns2:personIdentificationType"/>
+                <xs:element form="qualified" maxOccurs="unbounded" name="response" type="tns:infoType"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="infoType">
+        <xs:sequence>
+          <xs:element form="qualified" minOccurs="0" name="code" type="xs:integer"/>
+          <xs:element form="qualified" minOccurs="0" name="textEnglish" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="textGerman" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="textFrench" type="xs:string"/>
+          <xs:element form="qualified" minOccurs="0" name="textItalian" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="negativeReportType">
+        <xs:sequence>
+          <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="generalError" nillable="true" type="tns:infoType"/>
+          <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="personError" nillable="true">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element form="qualified" name="personIdentification" type="ns2:personIdentificationType"/>
+                <xs:element form="qualified" maxOccurs="unbounded" name="errorInfo" type="tns:infoType"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="personMoveResponse">
+        <xs:sequence>
+          <xs:element form="qualified" name="reportingMunicipality" type="ns3:swissMunicipalityType"/>
+          <xs:element form="qualified" name="personKnown" type="xs:boolean"/>
+          <xs:element form="qualified" minOccurs="0" name="personIdentification" type="ns2:personIdentificationType"/>
+          <xs:element form="qualified" minOccurs="0" name="moveAllowed" type="xs:nonNegativeInteger"/>
+          <xs:element form="qualified" minOccurs="0" name="residencePermitMovingPerson" type="ns4:residencePermitDataType"/>
+          <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="petData" nillable="true" type="ns5:petData"/>
+          <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="relatedPerson" nillable="true">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element form="qualified" name="personIdentification" type="ns2:personIdentificationType"/>
+                <xs:element form="qualified" minOccurs="0" name="residencePermitRelatedPerson" type="ns4:residencePermitDataType"/>
+                <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="petData" nillable="true" type="ns5:petData"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element form="qualified" minOccurs="0" name="destination" type="tns:moveOutReportingDestinationType"/>
+          <xs:element form="qualified" minOccurs="0" name="moveInAdditionalData" type="ns5:moveInAdditionalDataType"/>
+          <xs:element form="qualified" minOccurs="0" name="dwellingIdentification" type="ns5:dwellingIdentificationType"/>
+          <xs:element form="qualified" minOccurs="0" name="arrivalDate" type="xs:date"/>
+          <xs:element form="qualified" minOccurs="0" name="healthInsuranceData" type="ns5:healthInsuranceDataType"/>
+          <xs:element minOccurs="0" ref="tns:extension"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="moveOutReportingDestinationType">
+        <xs:sequence>
+          <xs:element form="qualified" name="moveOutMunicipality" type="ns3:swissMunicipalityType"/>
+          <xs:element form="qualified" name="destinationMunicipality" type="ns3:swissMunicipalityType"/>
+          <xs:element form="qualified" name="destinationAddress" type="ns4:dwellingAddressType"/>
+          <xs:element form="qualified" name="departureDate" type="xs:date"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="platformMoveOut">
+        <xs:sequence>
+          <xs:element form="qualified" name="personIdentification" type="ns2:personIdentificationType"/>
+          <xs:element form="qualified" minOccurs="0" name="contactData" type="ns5:contactDataType"/>
+          <xs:element form="qualified" name="destination" type="tns:moveOutReportingDestinationType"/>
+          <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="petData" nillable="true" type="ns5:petData"/>
+          <xs:element form="qualified" minOccurs="0" name="extension" type="xs:anyType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="platformMoveData">
+        <xs:sequence>
+          <xs:element form="qualified" name="personIdentification" type="ns2:personIdentificationType"/>
+          <xs:element form="qualified" minOccurs="0" name="contactData" type="ns5:contactDataType"/>
+          <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="petData" nillable="true" type="ns5:petData"/>
+          <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="serviceData" nillable="true" type="ns5:serviceDataType"/>
+          <xs:element form="qualified" name="dwellingAddress" type="ns4:dwellingAddressType"/>
+          <xs:element form="qualified" minOccurs="0" name="dwellingIdentification" type="ns5:dwellingIdentificationType"/>
+          <xs:element form="qualified" minOccurs="0" name="extension" type="xs:anyType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="platformMoveCommit">
+        <xs:sequence>
+          <xs:element form="qualified" name="personIdentification" type="ns2:personIdentificationType"/>
+          <xs:element form="qualified" minOccurs="0" name="contactData" type="ns5:contactDataType"/>
+          <xs:element form="qualified" name="destination" type="tns:moveOutReportingDestinationType"/>
+          <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="petData" nillable="true" type="ns5:petData"/>
+          <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="serviceData" nillable="true" type="ns5:serviceDataType"/>
+          <xs:element form="qualified" minOccurs="0" name="moveInAdditionalData" type="ns5:moveInAdditionalDataType"/>
+          <xs:element form="qualified" minOccurs="0" name="dwellingIdentification" type="ns5:dwellingIdentificationType"/>
+          <xs:element form="qualified" minOccurs="0" name="arrivalDate" type="xs:date"/>
+          <xs:element form="qualified" minOccurs="0" name="healthInsuranceData" type="ns5:healthInsuranceDataType"/>
+          <xs:element form="qualified" minOccurs="0" name="extension" type="xs:anyType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="platformMoveInAddress">
+        <xs:sequence>
+          <xs:element form="qualified" name="personIdentification" type="ns2:personIdentificationType"/>
+          <xs:element form="qualified" name="address" type="ns4:dwellingAddressType"/>
+          <xs:element form="qualified" minOccurs="0" name="extension" type="xs:anyType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="platformMoveIn">
+        <xs:sequence>
+          <xs:element form="qualified" name="personIdentification" type="ns2:personIdentificationType"/>
+          <xs:element form="qualified" minOccurs="0" name="contactData" type="ns5:contactDataType"/>
+          <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="petData" nillable="true" type="ns5:petData"/>
+          <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="serviceData" nillable="true" type="ns5:serviceDataType"/>
+          <xs:element form="qualified" minOccurs="0" name="moveInAdditionalData" type="ns5:moveInAdditionalDataType"/>
+          <xs:element form="qualified" minOccurs="0" name="dwellingIdentification" type="ns5:dwellingIdentificationType"/>
+          <xs:element form="qualified" minOccurs="0" name="arrivalDate" type="xs:date"/>
+          <xs:element form="qualified" minOccurs="0" name="healthInsuranceData" type="ns5:healthInsuranceDataType"/>
+          <xs:element form="qualified" minOccurs="0" name="extension" type="xs:anyType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="handleDeliveryResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="delivery" type="tns:deliveryType"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.ech.ch/xmlns/eCH-0185/1" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.ech.ch/xmlns/eCH-0185/1" xmlns:ns1="http://www.ech.ch/xmlns/eCH-0010/5">
+      <xs:import namespace="http://www.ech.ch/xmlns/eCH-0010/5"/>
+      <xs:element name="addOnDataRoot">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="contactData" type="tns:contactDataType"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="petData" nillable="true" type="tns:petData"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="serviceData" nillable="true" type="tns:serviceDataType"/>
+            <xs:element minOccurs="0" name="moveInAdditionalData" type="tns:moveInAdditionalDataType"/>
+            <xs:element minOccurs="0" name="dwellingIdentification" type="tns:dwellingIdentificationType"/>
+            <xs:element minOccurs="0" name="healthInsuranceData" type="tns:healthInsuranceDataType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="extension">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="petData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dogData" type="tns:dogDataType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="dogDataType">
+        <xs:sequence>
+          <xs:element name="name" type="xs:token"/>
+          <xs:element minOccurs="0" name="sex" type="xs:nonNegativeInteger"/>
+          <xs:element minOccurs="0" name="birthDate" type="tns:datePartiallyKnownType"/>
+          <xs:element minOccurs="0" name="chipNumber" type="xs:token"/>
+          <xs:element minOccurs="0" name="tattooNumber" type="xs:token"/>
+          <xs:element minOccurs="0" name="ANISnumber" type="xs:nonNegativeInteger"/>
+          <xs:element minOccurs="0" ref="tns:extension"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="datePartiallyKnownType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="yearMonthDay" type="xs:date"/>
+          <xs:element minOccurs="0" name="yearMonth" type="xs:gYearMonth"/>
+          <xs:element minOccurs="0" name="year" type="xs:gYear"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="dwellingIdentificationType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="administrativDwellingNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="EGID" type="xs:unsignedInt"/>
+          <xs:element minOccurs="0" name="EWID" type="xs:unsignedInt"/>
+          <xs:element minOccurs="0" name="floor" type="xs:string"/>
+          <xs:element minOccurs="0" name="positionOnFloor" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="healthInsuranceDataType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cardNumber" type="xs:token"/>
+          <xs:element minOccurs="0" name="insuranceName" type="xs:token"/>
+          <xs:element name="checkResult" type="xs:token"/>
+          <xs:element minOccurs="0" ref="tns:extension"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="serviceDataType">
+        <xs:sequence>
+          <xs:element name="serviceIdentification" type="xs:nonNegativeInteger"/>
+          <xs:element name="serviceName" type="xs:token"/>
+          <xs:element name="serviceAmount" type="xs:nonNegativeInteger"/>
+          <xs:element name="serviceOrderDate" type="xs:date"/>
+          <xs:element minOccurs="0" name="serviceDuration" type="xs:token"/>
+          <xs:element minOccurs="0" name="serviceDescription" type="xs:string"/>
+          <xs:element minOccurs="0" name="servicePrice" type="xs:decimal"/>
+          <xs:element minOccurs="0" ref="tns:extension"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="moveInAdditionalDataType">
+        <xs:sequence>
+          <xs:element name="housingSituationMoveInMunicipality" type="tns:housingSituationMoveInMunicipalityType"/>
+          <xs:element minOccurs="0" ref="tns:extension"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="housingSituationMoveInMunicipalityType">
+        <xs:sequence>
+          <xs:element name="housingSituationType" type="xs:nonNegativeInteger"/>
+          <xs:element minOccurs="0" name="name" type="xs:token"/>
+          <xs:element minOccurs="0" name="address" type="ns1:addressInformationType"/>
+          <xs:element minOccurs="0" ref="tns:extension"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="contactDataType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="phoneNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="emailAddress" type="xs:string"/>
+          <xs:element minOccurs="0" ref="tns:extension"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="checkResulType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Yes"/>
+          <xs:enumeration value="No"/>
+          <xs:enumeration value="Unknown"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.ech.ch/xmlns/eCH-0058/5" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.ech.ch/xmlns/eCH-0058/5">
+      <xs:element name="eventReport">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="header" type="tns:headerType"/>
+            <xs:element name="info" type="tns:infoType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="header" type="tns:headerType"/>
+      <xs:complexType name="headerType">
+        <xs:sequence>
+          <xs:element name="senderId" type="xs:anyURI"/>
+          <xs:element minOccurs="0" name="originalSenderId" type="xs:anyURI"/>
+          <xs:element minOccurs="0" name="declarationLocalReference" type="xs:token"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="recipientId" nillable="true" type="xs:anyURI"/>
+          <xs:element name="messageId" type="xs:token"/>
+          <xs:element minOccurs="0" name="referenceMessageId" type="xs:token"/>
+          <xs:element minOccurs="0" name="businessProcessId" type="xs:token"/>
+          <xs:element minOccurs="0" name="ourBusinessReferenceId" type="xs:token"/>
+          <xs:element minOccurs="0" name="yourBusinessReferenceId" type="xs:token"/>
+          <xs:element minOccurs="0" name="uniqueIdBusinessTransaction" type="xs:token"/>
+          <xs:element name="messageType" type="xs:anyURI"/>
+          <xs:element minOccurs="0" name="subMessageType" type="xs:token"/>
+          <xs:element name="sendingApplication" type="tns:sendingApplicationType"/>
+          <xs:element minOccurs="0" name="partialDelivery" type="tns:partialDeliveryType"/>
+          <xs:element minOccurs="0" name="subject" type="xs:token"/>
+          <xs:element minOccurs="0" name="comment" type="xs:token"/>
+          <xs:element name="messageDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="initialMessageDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="eventDate" type="xs:date"/>
+          <xs:element minOccurs="0" name="modificationDate" type="xs:date"/>
+          <xs:element name="action" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="attachment" nillable="true" type="xs:anyType"/>
+          <xs:element name="testDeliveryFlag" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="responseExpected" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="businessCaseClosed" type="xs:boolean"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="namedMetaData" nillable="true" type="tns:namedMetaDataType"/>
+          <xs:element minOccurs="0" name="extension" type="xs:anyType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="sendingApplicationType">
+        <xs:sequence>
+          <xs:element name="manufacturer" type="xs:string"/>
+          <xs:element name="product" type="xs:string"/>
+          <xs:element name="productVersion" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="partialDeliveryType">
+        <xs:sequence>
+          <xs:element name="uniqueIdDelivery" type="xs:token"/>
+          <xs:element name="totalNumberOfPackages" type="xs:nonNegativeInteger"/>
+          <xs:element name="numberOfActualPackage" type="xs:nonNegativeInteger"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="namedMetaDataType">
+        <xs:sequence>
+          <xs:element name="metaDataName" type="xs:string"/>
+          <xs:element name="metaDataValue" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="infoType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="positiveReport">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="notice" type="xs:anyType"/>
+                <xs:element minOccurs="0" name="data" type="xs:anyType"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="negativeReport">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="notice" type="xs:anyType"/>
+                <xs:element minOccurs="0" name="data" type="xs:anyType"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.ech.ch/xmlns/eCH-0044/4" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.ech.ch/xmlns/eCH-0044/4">
+      <xs:element name="personIdentificationRoot">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="personIdentification" type="tns:personIdentificationType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="personIdentificationType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="vn" type="xs:unsignedLong"/>
+          <xs:element name="localPersonId" type="tns:namedPersonIdType"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="otherPersonId" nillable="true" type="tns:namedPersonIdType"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="euPersonId" nillable="true" type="tns:namedPersonIdType"/>
+          <xs:element name="officialName" type="xs:token"/>
+          <xs:element name="firstName" type="xs:token"/>
+          <xs:element minOccurs="0" name="originalName" type="xs:token"/>
+          <xs:element name="sex" type="xs:string"/>
+          <xs:element name="dateOfBirth" type="tns:datePartiallyKnownType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="namedPersonIdType">
+        <xs:sequence>
+          <xs:element name="personIdCategory" type="xs:token"/>
+          <xs:element name="personId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="datePartiallyKnownType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="yearMonthDay" type="xs:date"/>
+          <xs:element minOccurs="0" name="yearMonth" type="xs:gYearMonth"/>
+          <xs:element minOccurs="0" name="year" type="xs:gYear"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="personIdentificationLightType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="vn" type="xs:unsignedLong"/>
+          <xs:element minOccurs="0" name="localPersonId" type="tns:namedPersonIdType"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="otherPersonId" nillable="true" type="tns:namedPersonIdType"/>
+          <xs:element name="officialName" type="xs:token"/>
+          <xs:element name="firstName" type="xs:token"/>
+          <xs:element minOccurs="0" name="originalName" type="xs:token"/>
+          <xs:element minOccurs="0" name="sex" type="xs:string"/>
+          <xs:element minOccurs="0" name="dateOfBirth" type="tns:datePartiallyKnownType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="personIdentificationKeyOnlyType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="vn" type="xs:unsignedLong"/>
+          <xs:element name="localPersonId" type="tns:namedPersonIdType"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="otherPersonId" nillable="true" type="tns:namedPersonIdType"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="euPersonId" nillable="true" type="tns:namedPersonIdType"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.ech.ch/xmlns/eCH-0011/8" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.ech.ch/xmlns/eCH-0011/8" xmlns:ns4="http://www.ech.ch/xmlns/eCH-0044/4" xmlns:ns3="http://www.ech.ch/xmlns/eCH-0008/3" xmlns:ns2="http://www.ech.ch/xmlns/eCH-0007/5" xmlns:ns1="http://www.ech.ch/xmlns/eCH-0010/5">
+      <xs:import namespace="http://www.ech.ch/xmlns/eCH-0010/5"/>
+      <xs:import namespace="http://www.ech.ch/xmlns/eCH-0007/5"/>
+      <xs:import namespace="http://www.ech.ch/xmlns/eCH-0008/3"/>
+      <xs:import namespace="http://www.ech.ch/xmlns/eCH-0044/4"/>
+      <xs:element name="personRoot">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="reportedPerson" type="tns:reportedPersonType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="residencePermitDataType">
+        <xs:sequence>
+          <xs:element name="residencePermit" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="residencePermitValidFrom" type="xs:date"/>
+          <xs:element minOccurs="0" name="residencePermitValidTill" type="xs:date"/>
+          <xs:element minOccurs="0" name="entryDate" type="xs:date"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="dwellingAddressType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EGID" type="xs:unsignedInt"/>
+          <xs:element minOccurs="0" name="EWID" type="xs:unsignedInt"/>
+          <xs:element minOccurs="0" name="householdID" type="xs:token"/>
+          <xs:element name="address" type="ns1:swissAddressInformationType"/>
+          <xs:element name="typeOfHousehold" type="xs:string"/>
+          <xs:element minOccurs="0" name="movingDate" type="xs:date"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="secondaryResidenceType">
+        <xs:sequence>
+          <xs:element name="mainResidence" type="ns2:swissMunicipalityType"/>
+          <xs:element name="secondaryResidence">
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension base="tns:residenceDataType">
+                  <xs:sequence/>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="residenceDataType">
+        <xs:sequence>
+          <xs:element name="reportingMunicipality" type="ns2:swissMunicipalityType"/>
+          <xs:element name="arrivalDate" type="xs:date"/>
+          <xs:element minOccurs="0" name="comesFrom" type="tns:destinationType"/>
+          <xs:element name="dwellingAddress" type="tns:dwellingAddressType"/>
+          <xs:element minOccurs="0" name="departureDate" type="xs:date"/>
+          <xs:element minOccurs="0" name="goesTo" type="tns:destinationType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="destinationType">
+        <xs:complexContent>
+          <xs:extension base="tns:generalPlaceType">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="mailAddress" type="ns1:addressInformationType"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="generalPlaceType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="unknown" type="xs:token"/>
+          <xs:element minOccurs="0" name="swissTown" type="ns2:swissMunicipalityType"/>
+          <xs:element minOccurs="0" name="foreignCountry">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="country" type="ns3:countryType"/>
+                <xs:element minOccurs="0" name="town" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="nameDataType">
+        <xs:sequence>
+          <xs:element name="officialName" type="xs:token"/>
+          <xs:element name="firstName" type="xs:token"/>
+          <xs:element minOccurs="0" name="originalName" type="xs:token"/>
+          <xs:element minOccurs="0" name="allianceName" type="xs:token"/>
+          <xs:element minOccurs="0" name="aliasName" type="xs:token"/>
+          <xs:element minOccurs="0" name="otherName" type="xs:token"/>
+          <xs:element minOccurs="0" name="callName" type="xs:token"/>
+          <xs:element minOccurs="0" name="nameOnForeignPassport" type="tns:foreignerNameType"/>
+          <xs:element minOccurs="0" name="declaredForeignName" type="tns:foreignerNameType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="foreignerNameType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="name" type="xs:token"/>
+          <xs:element minOccurs="0" name="firstName" type="xs:token"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="separationDataType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="separation" type="xs:string"/>
+          <xs:element minOccurs="0" name="separationValidFrom" type="xs:date"/>
+          <xs:element minOccurs="0" name="separationValidTill" type="xs:date"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="reportedPersonType">
+        <xs:sequence>
+          <xs:element name="person" type="tns:personType"/>
+          <xs:element minOccurs="0" name="hasMainResidence" type="tns:mainResidenceType"/>
+          <xs:element minOccurs="0" name="hasSecondaryResidence" type="tns:secondaryResidenceType"/>
+          <xs:element minOccurs="0" name="hasOtherResidence" type="tns:otherResidenceType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="personType">
+        <xs:sequence>
+          <xs:element name="personIdentification" type="ns4:personIdentificationType"/>
+          <xs:element name="nameData" type="tns:nameDataType"/>
+          <xs:element name="birthData" type="tns:birthDataType"/>
+          <xs:element name="religionData" type="tns:religionDataType"/>
+          <xs:element name="maritalData" type="tns:maritalDataType"/>
+          <xs:element name="nationalityData" type="tns:nationalityDataType"/>
+          <xs:element minOccurs="0" name="deathData" type="tns:deathDataType"/>
+          <xs:element minOccurs="0" name="contactData" type="tns:contactDataType"/>
+          <xs:element minOccurs="0" name="languageOfCorrespondance" type="xs:token"/>
+          <xs:element minOccurs="0" name="restrictedVotingAndElectionRightFederation" type="xs:boolean"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="placeOfOrigin" nillable="true" type="tns:placeOfOriginType"/>
+          <xs:element minOccurs="0" name="residencePermit" type="tns:residencePermitDataType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="birthDataType">
+        <xs:sequence>
+          <xs:element name="dateOfBirth" type="ns4:datePartiallyKnownType"/>
+          <xs:element name="placeOfBirth" type="tns:generalPlaceType"/>
+          <xs:element name="sex" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="religionDataType">
+        <xs:sequence>
+          <xs:element name="religion" type="xs:string"/>
+          <xs:element minOccurs="0" name="religionValidFrom" type="xs:date"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="maritalDataType">
+        <xs:sequence>
+          <xs:element name="maritalStatus" type="xs:string"/>
+          <xs:element minOccurs="0" name="dateOfMaritalStatus" type="xs:date"/>
+          <xs:element minOccurs="0" name="cancelationReason" type="xs:string"/>
+          <xs:element minOccurs="0" name="officialProofOfMaritalStatusYesNo" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="separationData" type="tns:separationDataType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="maritalDataRestrictedMarriageType">
+        <xs:complexContent>
+          <xs:extension base="tns:maritalDataType">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="maritalDataRestrictedPartnershipType">
+        <xs:complexContent>
+          <xs:extension base="tns:maritalDataType">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="maritalDataRestrictedDivorceType">
+        <xs:complexContent>
+          <xs:extension base="tns:maritalDataType">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="maritalDataRestrictedUndoMarriedType">
+        <xs:complexContent>
+          <xs:extension base="tns:maritalDataType">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="maritalDataRestrictedUndoPartnershipType">
+        <xs:complexContent>
+          <xs:extension base="tns:maritalDataType">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="maritalDataRestrictedMaritalStatusPartnerType">
+        <xs:complexContent>
+          <xs:extension base="tns:maritalDataType">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="nationalityDataType">
+        <xs:sequence>
+          <xs:element name="nationalityStatus" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="countryInfo" nillable="true">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="country" type="ns3:countryType"/>
+                <xs:element minOccurs="0" name="nationalityValidFrom" type="xs:date"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="deathDataType">
+        <xs:sequence>
+          <xs:element name="deathPeriod" type="tns:deathPeriodType"/>
+          <xs:element minOccurs="0" name="placeOfDeath" type="tns:generalPlaceType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="deathPeriodType">
+        <xs:sequence>
+          <xs:element name="dateFrom" type="xs:date"/>
+          <xs:element minOccurs="0" name="dateTo" type="xs:date"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="contactDataType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="personIdentification" type="ns4:personIdentificationType"/>
+          <xs:element minOccurs="0" name="personIdentificationPartner" type="ns4:personIdentificationLightType"/>
+          <xs:element minOccurs="0" name="partnerIdOrganisation" type="tns:partnerIdOrganisationType"/>
+          <xs:element name="contactAddress" type="ns1:mailAddressType"/>
+          <xs:element minOccurs="0" name="contactValidFrom" type="xs:date"/>
+          <xs:element minOccurs="0" name="contactValidTill" type="xs:date"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="partnerIdOrganisationType">
+        <xs:sequence>
+          <xs:element name="localPersonId" type="ns4:namedPersonIdType"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="otherPersonId" nillable="true" type="ns4:namedPersonIdType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="placeOfOriginType">
+        <xs:sequence>
+          <xs:element name="originName" type="xs:string"/>
+          <xs:element name="canton" type="xs:token"/>
+          <xs:element minOccurs="0" name="placeOfOriginId" type="xs:nonNegativeInteger"/>
+          <xs:element minOccurs="0" name="historyMunicipalityId" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="mainResidenceType">
+        <xs:sequence>
+          <xs:element name="mainResidence" type="tns:residenceDataType"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="secondaryResidence" nillable="true" type="ns2:swissMunicipalityType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="otherResidenceType">
+        <xs:sequence>
+          <xs:element name="secondaryResidence">
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension base="tns:residenceDataType">
+                  <xs:sequence/>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="swissMunicipalityWithoutBFS">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="municipalityId" type="xs:int"/>
+          <xs:element name="municipalityName" type="xs:token"/>
+          <xs:element minOccurs="0" name="cantonAbbreviation" type="xs:token"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.ech.ch/xmlns/eCH-0010/5" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.ech.ch/xmlns/eCH-0010/5">
+      <xs:element name="mailAddress" type="tns:mailAddressType"/>
+      <xs:element name="organisationMailAdress" type="tns:organisationMailAddressType"/>
+      <xs:element name="personMailAddress" type="tns:personMailAddressType"/>
+      <xs:complexType name="addressInformationType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="addressLine1" type="xs:token"/>
+          <xs:element minOccurs="0" name="addressLine2" type="xs:token"/>
+          <xs:element minOccurs="0" name="street" type="xs:token"/>
+          <xs:element minOccurs="0" name="houseNumber" type="xs:token"/>
+          <xs:element minOccurs="0" name="dwellingNumber" type="xs:token"/>
+          <xs:element minOccurs="0" name="postOfficeBoxNumber" type="xs:unsignedInt"/>
+          <xs:element minOccurs="0" name="postOfficeBoxText" type="xs:token"/>
+          <xs:element minOccurs="0" name="locality" type="xs:token"/>
+          <xs:element name="town" type="xs:token"/>
+          <xs:element minOccurs="0" name="swissZipCode" type="xs:unsignedInt"/>
+          <xs:element minOccurs="0" name="swissZipCodeAddOn" type="xs:string"/>
+          <xs:element minOccurs="0" name="swissZipCodeId" type="xs:int"/>
+          <xs:element minOccurs="0" name="foreignZipCode" type="xs:token"/>
+          <xs:element name="country" type="xs:token"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="swissAddressInformationType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="addressLine1" type="xs:token"/>
+          <xs:element minOccurs="0" name="addressLine2" type="xs:token"/>
+          <xs:element minOccurs="0" name="street" type="xs:token"/>
+          <xs:element minOccurs="0" name="houseNumber" type="xs:token"/>
+          <xs:element minOccurs="0" name="dwellingNumber" type="xs:token"/>
+          <xs:element minOccurs="0" name="locality" type="xs:token"/>
+          <xs:element name="town" type="xs:token"/>
+          <xs:element name="swissZipCode" type="xs:unsignedInt"/>
+          <xs:element minOccurs="0" name="swissZipCodeAddOn" type="xs:string"/>
+          <xs:element minOccurs="0" name="swissZipCodeId" type="xs:int"/>
+          <xs:element name="country" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="organisationMailAddressType">
+        <xs:sequence>
+          <xs:element name="organisation" type="tns:organisationMailAddressInfoType"/>
+          <xs:element name="addressInformation" type="tns:addressInformationType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="organisationMailAddressInfoType">
+        <xs:sequence>
+          <xs:element name="organisationName" type="xs:token"/>
+          <xs:element minOccurs="0" name="organisationNameAddOn1" type="xs:token"/>
+          <xs:element minOccurs="0" name="organisationNameAddOn2" type="xs:token"/>
+          <xs:element minOccurs="0" name="mrMrs" type="xs:token"/>
+          <xs:element minOccurs="0" name="title" type="xs:token"/>
+          <xs:element minOccurs="0" name="firstName" type="xs:token"/>
+          <xs:element minOccurs="0" name="lastName" type="xs:token"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="mailAddressType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="organisation" type="tns:organisationMailAddressInfoType"/>
+          <xs:element minOccurs="0" name="person" type="tns:personMailAddressInfoType"/>
+          <xs:element name="addressInformation" type="tns:addressInformationType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="personMailAddressInfoType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="mrMrs" type="xs:token"/>
+          <xs:element minOccurs="0" name="title" type="xs:token"/>
+          <xs:element minOccurs="0" name="firstName" type="xs:token"/>
+          <xs:element name="lastName" type="xs:token"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="personMailAddressType">
+        <xs:sequence>
+          <xs:element name="person" type="tns:personMailAddressInfoType"/>
+          <xs:element name="addressInformation" type="tns:addressInformationType"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.ech.ch/xmlns/eCH-0008/3" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="countryType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="countryId" type="xs:integer"/>
+          <xs:element minOccurs="0" name="countryIdISO2" type="xs:token"/>
+          <xs:element name="countryNameShort" type="xs:token"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.ech.ch/xmlns/eCH-0007/5" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.ech.ch/xmlns/eCH-0007/5">
+      <xs:element name="municipalityRoot">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="swissMunicipality" type="tns:swissMunicipalityType"/>
+            <xs:element minOccurs="0" name="swissAndFlMunicipality" type="tns:swissAndFlMunicipalityType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="swissMunicipalityType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="municipalityId" type="xs:int"/>
+          <xs:element name="municipalityName" type="xs:token"/>
+          <xs:element minOccurs="0" name="cantonAbbreviation" type="xs:token"/>
+          <xs:element minOccurs="0" name="historyMunicipalityId" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="swissAndFlMunicipalityType">
+        <xs:sequence>
+          <xs:element name="municipalityId" type="xs:int"/>
+          <xs:element name="municipalityName" type="xs:token"/>
+          <xs:element name="cantonFlAbbreviation" type="xs:token"/>
+          <xs:element minOccurs="0" name="historyMunicipalityId" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="cantonAbbreviationType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="ZH"/>
+          <xs:enumeration value="BE"/>
+          <xs:enumeration value="LU"/>
+          <xs:enumeration value="UR"/>
+          <xs:enumeration value="SZ"/>
+          <xs:enumeration value="OW"/>
+          <xs:enumeration value="NW"/>
+          <xs:enumeration value="GL"/>
+          <xs:enumeration value="ZG"/>
+          <xs:enumeration value="FR"/>
+          <xs:enumeration value="SO"/>
+          <xs:enumeration value="BS"/>
+          <xs:enumeration value="BL"/>
+          <xs:enumeration value="SH"/>
+          <xs:enumeration value="AR"/>
+          <xs:enumeration value="AI"/>
+          <xs:enumeration value="SG"/>
+          <xs:enumeration value="GR"/>
+          <xs:enumeration value="AG"/>
+          <xs:enumeration value="TG"/>
+          <xs:enumeration value="TI"/>
+          <xs:enumeration value="VD"/>
+          <xs:enumeration value="VS"/>
+          <xs:enumeration value="NE"/>
+          <xs:enumeration value="GE"/>
+          <xs:enumeration value="JU"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="cantonFlAbbreviationType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="ZH"/>
+          <xs:enumeration value="BE"/>
+          <xs:enumeration value="LU"/>
+          <xs:enumeration value="UR"/>
+          <xs:enumeration value="SZ"/>
+          <xs:enumeration value="OW"/>
+          <xs:enumeration value="NW"/>
+          <xs:enumeration value="GL"/>
+          <xs:enumeration value="ZG"/>
+          <xs:enumeration value="FR"/>
+          <xs:enumeration value="SO"/>
+          <xs:enumeration value="BS"/>
+          <xs:enumeration value="BL"/>
+          <xs:enumeration value="SH"/>
+          <xs:enumeration value="AR"/>
+          <xs:enumeration value="AI"/>
+          <xs:enumeration value="SG"/>
+          <xs:enumeration value="GR"/>
+          <xs:enumeration value="AG"/>
+          <xs:enumeration value="TG"/>
+          <xs:enumeration value="TI"/>
+          <xs:enumeration value="VD"/>
+          <xs:enumeration value="VS"/>
+          <xs:enumeration value="NE"/>
+          <xs:enumeration value="GE"/>
+          <xs:enumeration value="JU"/>
+          <xs:enumeration value="FL"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="handleDelivery">
+    <wsdl:part element="tns:handleDelivery" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="handleDeliveryResponse">
+    <wsdl:part element="tns:handleDeliveryResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="Personenregister-Service">
+    <wsdl:operation name="handleDelivery">
+      <wsdl:input message="tns:handleDelivery" name="handleDelivery"></wsdl:input>
+      <wsdl:output message="tns:handleDeliveryResponse" name="handleDeliveryResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PersonenRegisterServiceServiceSoapBinding" type="tns:Personenregister-Service">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="handleDelivery">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="handleDelivery">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="handleDeliveryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PersonenRegisterServiceService">
+    <wsdl:port binding="tns:PersonenRegisterServiceServiceSoapBinding" name="PersonenRegisterServicePort">
+      <soap:address location="http://localhost:8083/soap/PersonenRegisterService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8083/soap/PersonenRegisterService</con:endpoint></con:endpoints><con:operation id="9acae59e-4602-4ba0-bd34-53ba877a8f17" isOneWay="false" action="" name="handleDelivery" bindingOperationName="handleDelivery" type="Request-Response" outputName="handleDeliveryResponse" inputName="handleDelivery" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f6c33ef0-8bdc-4d1d-ad3d-f3bd5b621d3a" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8083/soap/PersonenRegisterService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://www.ech.ch/xmlns/eCH-0194/1" xmlns:ns1="http://www.ech.ch/xmlns/eCH-0058/5" xmlns:ns2="http://www.ech.ch/xmlns/eCH-0044/4" xmlns:ns3="http://www.ech.ch/xmlns/eCH-0007/5" xmlns:ns4="http://www.ech.ch/xmlns/eCH-0011/8" xmlns:ns5="http://www.ech.ch/xmlns/eCH-0185/1" xmlns:ns6="http://www.ech.ch/xmlns/eCH-0010/5">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:handleDelivery>\r
+         <delivery>\r
+            <ns:deliveryHeader>\r
+               <ns1:senderId>sedex://umzugsplattform</ns1:senderId>
+               <ns1:messageId>EUMZUG.KTBE.personMoveRequest</ns1:messageId>
+               <ns1:businessProcessId>EUMZUG.KTBE.3218</ns1:businessProcessId>
+               <ns1:messageType>sedex://personMoveRequest</ns1:messageType>
+               <ns1:sendingApplication>
+                  <ns1:manufacturer>Kanton Bern</ns1:manufacturer>
+                  <ns1:product>Umzugsplattform</ns1:product>
+                  <ns1:productVersion>1.0</ns1:productVersion>
+               </ns1:sendingApplication>
+               <ns1:messageDate>2017-11-18T00:00:00+01:00</ns1:messageDate>
+               <ns1:action>1</ns1:action>
+               <ns1:testDeliveryFlag>true</ns1:testDeliveryFlag>
+            </ns:deliveryHeader>\r
+            <ns:personMoveRequest>
+               <ns:personIdentification>
+                  <ns2:localPersonId>
+                     <ns2:personIdCategory>LOC.UMZUGPLATTFORM</ns2:personIdCategory>
+                     <ns2:personId>XY00933929</ns2:personId>
+                  </ns2:localPersonId>
+                  <ns2:officialName>Meier</ns2:officialName>
+                  <ns2:firstName>Ruth</ns2:firstName>
+                  <ns2:sex>2</ns2:sex>
+                  <ns2:dateOfBirth>
+                     <ns2:yearMonthDay>1980-01-01</ns2:yearMonthDay>
+                  </ns2:dateOfBirth>
+               </ns:personIdentification>
+               <ns:municipality>
+                  <ns3:municipalityId>329</ns3:municipalityId>
+                  <ns3:municipalityName>Köniz (BE)</ns3:municipalityName>
+               </ns:municipality>
+            </ns:personMoveRequest>
+         </delivery>\r
+      </ns:handleDelivery>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.ech.ch/xmlns/eCH-0194/1/Personenregister-Service/handleDelivery"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="423bd8e9-f1db-41db-88dd-d914e8bd7db0" name="Personenregister TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="784ea02e-79c3-4b1e-b044-4d493b9b9e89" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Person bekannt, nicht umzugsberechtigt" searchProperties="true"><con:settings/><con:testStep type="request" id="7be3c3c0-81a6-45f6-a0f3-1f727f8757fa" name="Ruth Meier"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>PersonenRegisterServiceServiceSoapBinding</con:interface><con:operation>handleDelivery</con:operation><con:request name="Ruth Meier" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="aae2a998-5e71-4428-9ff2-51f8e8b6ef43"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8083/soap/PersonenRegisterService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://www.ech.ch/xmlns/eCH-0194/1" xmlns:ns1="http://www.ech.ch/xmlns/eCH-0058/5" xmlns:ns2="http://www.ech.ch/xmlns/eCH-0044/4" xmlns:ns3="http://www.ech.ch/xmlns/eCH-0007/5" xmlns:ns4="http://www.ech.ch/xmlns/eCH-0011/8" xmlns:ns5="http://www.ech.ch/xmlns/eCH-0185/1" xmlns:ns6="http://www.ech.ch/xmlns/eCH-0010/5">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:handleDelivery>\r
+         <delivery>\r
+            <ns:deliveryHeader>\r
+               <ns1:senderId>sedex://umzugsplattform</ns1:senderId>
+               <ns1:messageId>EUMZUG.KTBE.personMoveRequest</ns1:messageId>
+               <ns1:businessProcessId>EUMZUG.KTBE.3218</ns1:businessProcessId>
+               <ns1:messageType>sedex://personMoveRequest</ns1:messageType>
+               <ns1:sendingApplication>
+                  <ns1:manufacturer>Kanton Bern</ns1:manufacturer>
+                  <ns1:product>Umzugsplattform</ns1:product>
+                  <ns1:productVersion>1.0</ns1:productVersion>
+               </ns1:sendingApplication>
+               <ns1:messageDate>2017-11-18T00:00:00+01:00</ns1:messageDate>
+               <ns1:action>1</ns1:action>
+               <ns1:testDeliveryFlag>true</ns1:testDeliveryFlag>
+            </ns:deliveryHeader>\r
+            <ns:personMoveRequest>
+               <ns:personIdentification>
+                  <ns2:localPersonId>
+                     <ns2:personIdCategory>LOC.UMZUGPLATTFORM</ns2:personIdCategory>
+                     <ns2:personId>XY00933929</ns2:personId>
+                  </ns2:localPersonId>
+                  <ns2:officialName>Meier</ns2:officialName>
+                  <ns2:firstName>Ruth</ns2:firstName>
+                  <ns2:sex>2</ns2:sex>
+                  <ns2:dateOfBirth>
+                     <ns2:yearMonthDay>1980-01-01</ns2:yearMonthDay>
+                  </ns2:dateOfBirth>
+               </ns:personIdentification>
+               <ns:municipality>
+                  <ns3:municipalityId>329</ns3:municipalityId>
+                  <ns3:municipalityName>Köniz (BE)</ns3:municipalityName>
+               </ns:municipality>
+            </ns:personMoveRequest>
+         </delivery>\r
+      </ns:handleDelivery>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="7e724fef-27d0-4f26-a9e4-c39eee4a5469" name="SOAP Response"/><con:assertion type="XPath Match" id="13fcf625-918f-4b42-8c97-63cf4e2282d0" name="Person bekannt"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns5='http://www.ech.ch/xmlns/eCH-0007/5';
+declare namespace ns3='http://www.ech.ch/xmlns/eCH-0194/1';
+declare namespace ns7='http://www.ech.ch/xmlns/eCH-0185/1';
+declare namespace ns2='http://www.ech.ch/xmlns/eCH-0058/5';
+declare namespace ns6='http://www.ech.ch/xmlns/eCH-0011/8';
+declare namespace ns9='http://www.ech.ch/xmlns/eCH-0008/3';
+declare namespace ns8='http://www.ech.ch/xmlns/eCH-0010/5';
+declare namespace ns4='http://www.ech.ch/xmlns/eCH-0044/4';
+//ns3:personKnown</path><content>true</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="13fcf625-918f-4b42-8c97-63cf4e2282d0" name="Person nicht umzugsberechtigt"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns5='http://www.ech.ch/xmlns/eCH-0007/5';
+declare namespace ns3='http://www.ech.ch/xmlns/eCH-0194/1';
+declare namespace ns7='http://www.ech.ch/xmlns/eCH-0185/1';
+declare namespace ns2='http://www.ech.ch/xmlns/eCH-0058/5';
+declare namespace ns6='http://www.ech.ch/xmlns/eCH-0011/8';
+declare namespace ns9='http://www.ech.ch/xmlns/eCH-0008/3';
+declare namespace ns8='http://www.ech.ch/xmlns/eCH-0010/5';
+declare namespace ns4='http://www.ech.ch/xmlns/eCH-0044/4';
+//ns3:moveAllowed</path><content>2</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.ech.ch/xmlns/eCH-0194/1/Personenregister-Service/handleDelivery"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="ac8bf554-cf43-4b34-9441-754d2fdb2ea6" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Person nicht bekannt" searchProperties="true"><con:settings/><con:testStep type="request" id="f2101462-c55e-44ac-a7ea-25d472e391b9" name="Reto Gibtesnicht"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>PersonenRegisterServiceServiceSoapBinding</con:interface><con:operation>handleDelivery</con:operation><con:request name="Reto Gibtesnicht" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="aae2a998-5e71-4428-9ff2-51f8e8b6ef43"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8083/soap/PersonenRegisterService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://www.ech.ch/xmlns/eCH-0194/1" xmlns:ns1="http://www.ech.ch/xmlns/eCH-0058/5" xmlns:ns2="http://www.ech.ch/xmlns/eCH-0044/4" xmlns:ns3="http://www.ech.ch/xmlns/eCH-0007/5" xmlns:ns4="http://www.ech.ch/xmlns/eCH-0011/8" xmlns:ns5="http://www.ech.ch/xmlns/eCH-0185/1" xmlns:ns6="http://www.ech.ch/xmlns/eCH-0010/5">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:handleDelivery>\r
+         <delivery>\r
+            <ns:deliveryHeader>\r
+               <ns1:senderId>sedex://umzugsplattform</ns1:senderId>
+               <ns1:messageId>EUMZUG.KTBE.personMoveRequest</ns1:messageId>
+               <ns1:businessProcessId>EUMZUG.KTBE.3218</ns1:businessProcessId>
+               <ns1:messageType>sedex://personMoveRequest</ns1:messageType>
+               <ns1:sendingApplication>
+                  <ns1:manufacturer>Kanton Bern</ns1:manufacturer>
+                  <ns1:product>Umzugsplattform</ns1:product>
+                  <ns1:productVersion>1.0</ns1:productVersion>
+               </ns1:sendingApplication>
+               <ns1:messageDate>2017-11-18T00:00:00+01:00</ns1:messageDate>
+               <ns1:action>1</ns1:action>
+               <ns1:testDeliveryFlag>true</ns1:testDeliveryFlag>
+            </ns:deliveryHeader>\r
+            <ns:personMoveRequest>
+               <ns:personIdentification>
+                  <ns2:localPersonId>
+                     <ns2:personIdCategory>LOC.UMZUGPLATTFORM</ns2:personIdCategory>
+                     <ns2:personId>XY00933929</ns2:personId>
+                  </ns2:localPersonId>
+                  <ns2:officialName>Gibtesnicht</ns2:officialName>
+                  <ns2:firstName>Reto</ns2:firstName>
+                  <ns2:sex>1</ns2:sex>
+                  <ns2:dateOfBirth>
+                     <ns2:yearMonthDay>1980-01-01</ns2:yearMonthDay>
+                  </ns2:dateOfBirth>
+               </ns:personIdentification>
+               <ns:municipality>
+                  <ns3:municipalityId>329</ns3:municipalityId>
+                  <ns3:municipalityName>Köniz (BE)</ns3:municipalityName>
+               </ns:municipality>
+            </ns:personMoveRequest>
+         </delivery>\r
+      </ns:handleDelivery>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="7e724fef-27d0-4f26-a9e4-c39eee4a5469" name="SOAP Response"/><con:assertion type="XPath Match" id="13fcf625-918f-4b42-8c97-63cf4e2282d0" name="Person nicht bekannt"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns5='http://www.ech.ch/xmlns/eCH-0007/5';
+declare namespace ns3='http://www.ech.ch/xmlns/eCH-0194/1';
+declare namespace ns7='http://www.ech.ch/xmlns/eCH-0185/1';
+declare namespace ns2='http://www.ech.ch/xmlns/eCH-0058/5';
+declare namespace ns6='http://www.ech.ch/xmlns/eCH-0011/8';
+declare namespace ns9='http://www.ech.ch/xmlns/eCH-0008/3';
+declare namespace ns8='http://www.ech.ch/xmlns/eCH-0010/5';
+declare namespace ns4='http://www.ech.ch/xmlns/eCH-0044/4';
+//ns3:personKnown</path><content>false</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.ech.ch/xmlns/eCH-0194/1/Personenregister-Service/handleDelivery"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="6779f138-1692-4160-8bf4-98900b7c59fd" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Person bekannt, umzugsberechtigt, mit Angehörigen" searchProperties="true"><con:settings/><con:testStep type="request" id="226908c3-c0de-47e2-a01a-12beb787fce6" name="Hans Meier"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>PersonenRegisterServiceServiceSoapBinding</con:interface><con:operation>handleDelivery</con:operation><con:request name="Hans Meier" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="aae2a998-5e71-4428-9ff2-51f8e8b6ef43"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8083/soap/PersonenRegisterService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://www.ech.ch/xmlns/eCH-0194/1" xmlns:ns1="http://www.ech.ch/xmlns/eCH-0058/5" xmlns:ns2="http://www.ech.ch/xmlns/eCH-0044/4" xmlns:ns3="http://www.ech.ch/xmlns/eCH-0007/5" xmlns:ns4="http://www.ech.ch/xmlns/eCH-0011/8" xmlns:ns5="http://www.ech.ch/xmlns/eCH-0185/1" xmlns:ns6="http://www.ech.ch/xmlns/eCH-0010/5">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:handleDelivery>\r
+         <delivery>\r
+            <ns:deliveryHeader>\r
+               <ns1:senderId>sedex://umzugsplattform</ns1:senderId>
+               <ns1:messageId>EUMZUG.KTBE.personMoveRequest</ns1:messageId>
+               <ns1:businessProcessId>EUMZUG.KTBE.3218</ns1:businessProcessId>
+               <ns1:messageType>sedex://personMoveRequest</ns1:messageType>
+               <ns1:sendingApplication>
+                  <ns1:manufacturer>Kanton Bern</ns1:manufacturer>
+                  <ns1:product>Umzugsplattform</ns1:product>
+                  <ns1:productVersion>1.0</ns1:productVersion>
+               </ns1:sendingApplication>
+               <ns1:messageDate>2017-11-18T00:00:00+01:00</ns1:messageDate>
+               <ns1:action>1</ns1:action>
+               <ns1:testDeliveryFlag>true</ns1:testDeliveryFlag>
+            </ns:deliveryHeader>\r
+            <ns:personMoveRequest>
+               <ns:personIdentification>
+                  <ns2:localPersonId>
+                     <ns2:personIdCategory>LOC.UMZUGPLATTFORM</ns2:personIdCategory>
+                     <ns2:personId>XY00933929</ns2:personId>
+                  </ns2:localPersonId>
+                  <ns2:officialName>Meier</ns2:officialName>
+                  <ns2:firstName>Hans</ns2:firstName>
+                  <ns2:sex>1</ns2:sex>
+                  <ns2:dateOfBirth>
+                     <ns2:yearMonthDay>1970-01-01</ns2:yearMonthDay>
+                  </ns2:dateOfBirth>
+               </ns:personIdentification>
+               <ns:municipality>
+                  <ns3:municipalityId>329</ns3:municipalityId>
+                  <ns3:municipalityName>Köniz (BE)</ns3:municipalityName>
+               </ns:municipality>
+            </ns:personMoveRequest>
+         </delivery>\r
+      </ns:handleDelivery>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="7e724fef-27d0-4f26-a9e4-c39eee4a5469" name="SOAP Response"/><con:assertion type="XPath Match" id="13fcf625-918f-4b42-8c97-63cf4e2282d0" name="Person bekannt"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns5='http://www.ech.ch/xmlns/eCH-0007/5';
+declare namespace ns3='http://www.ech.ch/xmlns/eCH-0194/1';
+declare namespace ns7='http://www.ech.ch/xmlns/eCH-0185/1';
+declare namespace ns2='http://www.ech.ch/xmlns/eCH-0058/5';
+declare namespace ns6='http://www.ech.ch/xmlns/eCH-0011/8';
+declare namespace ns9='http://www.ech.ch/xmlns/eCH-0008/3';
+declare namespace ns8='http://www.ech.ch/xmlns/eCH-0010/5';
+declare namespace ns4='http://www.ech.ch/xmlns/eCH-0044/4';
+//ns3:personKnown</path><content>true</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="13fcf625-918f-4b42-8c97-63cf4e2282d0" name="Person umzugsberechtigt"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns5='http://www.ech.ch/xmlns/eCH-0007/5';
+declare namespace ns3='http://www.ech.ch/xmlns/eCH-0194/1';
+declare namespace ns7='http://www.ech.ch/xmlns/eCH-0185/1';
+declare namespace ns2='http://www.ech.ch/xmlns/eCH-0058/5';
+declare namespace ns6='http://www.ech.ch/xmlns/eCH-0011/8';
+declare namespace ns9='http://www.ech.ch/xmlns/eCH-0008/3';
+declare namespace ns8='http://www.ech.ch/xmlns/eCH-0010/5';
+declare namespace ns4='http://www.ech.ch/xmlns/eCH-0044/4';
+//ns3:moveAllowed</path><content>1</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XQuery Match" id="b9d079e3-6cd5-49b1-9672-c8c2ae3fb9e5" name="3 mitumziehende Personen"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns5='http://www.ech.ch/xmlns/eCH-0007/5';
+declare namespace ns3='http://www.ech.ch/xmlns/eCH-0194/1';
+declare namespace ns7='http://www.ech.ch/xmlns/eCH-0185/1';
+declare namespace ns2='http://www.ech.ch/xmlns/eCH-0058/5';
+declare namespace ns6='http://www.ech.ch/xmlns/eCH-0011/8';
+declare namespace ns9='http://www.ech.ch/xmlns/eCH-0008/3';
+declare namespace ns8='http://www.ech.ch/xmlns/eCH-0010/5';
+declare namespace ns4='http://www.ech.ch/xmlns/eCH-0044/4';
+count(//ns3:relatedPerson)</path><content>&lt;xml-fragment>3&lt;/xml-fragment></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.ech.ch/xmlns/eCH-0194/1/Personenregister-Service/handleDelivery"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="89b54d5f-86eb-47f6-9e82-44f41fe0563c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Person bekannt, umzugsberechtigt, ohne Angehörige" searchProperties="true"><con:settings/><con:testStep type="request" id="accb5392-620c-4a04-8618-9be706ba71e2" name="Pipi Langstrumpf"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>PersonenRegisterServiceServiceSoapBinding</con:interface><con:operation>handleDelivery</con:operation><con:request name="Pipi Langstrumpf" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="aae2a998-5e71-4428-9ff2-51f8e8b6ef43"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8083/soap/PersonenRegisterService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://www.ech.ch/xmlns/eCH-0194/1" xmlns:ns1="http://www.ech.ch/xmlns/eCH-0058/5" xmlns:ns2="http://www.ech.ch/xmlns/eCH-0044/4" xmlns:ns3="http://www.ech.ch/xmlns/eCH-0007/5" xmlns:ns4="http://www.ech.ch/xmlns/eCH-0011/8" xmlns:ns5="http://www.ech.ch/xmlns/eCH-0185/1" xmlns:ns6="http://www.ech.ch/xmlns/eCH-0010/5">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:handleDelivery>\r
+         <delivery>\r
+            <ns:deliveryHeader>\r
+               <ns1:senderId>sedex://umzugsplattform</ns1:senderId>
+               <ns1:messageId>EUMZUG.KTBE.personMoveRequest</ns1:messageId>
+               <ns1:businessProcessId>EUMZUG.KTBE.3218</ns1:businessProcessId>
+               <ns1:messageType>sedex://personMoveRequest</ns1:messageType>
+               <ns1:sendingApplication>
+                  <ns1:manufacturer>Kanton Bern</ns1:manufacturer>
+                  <ns1:product>Umzugsplattform</ns1:product>
+                  <ns1:productVersion>1.0</ns1:productVersion>
+               </ns1:sendingApplication>
+               <ns1:messageDate>2017-11-18T00:00:00+01:00</ns1:messageDate>
+               <ns1:action>1</ns1:action>
+               <ns1:testDeliveryFlag>true</ns1:testDeliveryFlag>
+            </ns:deliveryHeader>\r
+            <ns:personMoveRequest>
+               <ns:personIdentification>
+                  <ns2:localPersonId>
+                     <ns2:personIdCategory>LOC.UMZUGPLATTFORM</ns2:personIdCategory>
+                     <ns2:personId>XY00933929</ns2:personId>
+                  </ns2:localPersonId>
+                  <ns2:officialName>Langstrumpf</ns2:officialName>
+                  <ns2:firstName>Pipi</ns2:firstName>
+                  <ns2:sex>2</ns2:sex>
+                  <ns2:dateOfBirth>
+                     <ns2:yearMonthDay>1960-01-01</ns2:yearMonthDay>
+                  </ns2:dateOfBirth>
+               </ns:personIdentification>
+               <ns:municipality>
+                  <ns3:municipalityId>329</ns3:municipalityId>
+                  <ns3:municipalityName>Köniz (BE)</ns3:municipalityName>
+               </ns:municipality>
+            </ns:personMoveRequest>
+         </delivery>\r
+      </ns:handleDelivery>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="7e724fef-27d0-4f26-a9e4-c39eee4a5469" name="SOAP Response"/><con:assertion type="XPath Match" id="13fcf625-918f-4b42-8c97-63cf4e2282d0" name="Person bekannt"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns5='http://www.ech.ch/xmlns/eCH-0007/5';
+declare namespace ns3='http://www.ech.ch/xmlns/eCH-0194/1';
+declare namespace ns7='http://www.ech.ch/xmlns/eCH-0185/1';
+declare namespace ns2='http://www.ech.ch/xmlns/eCH-0058/5';
+declare namespace ns6='http://www.ech.ch/xmlns/eCH-0011/8';
+declare namespace ns9='http://www.ech.ch/xmlns/eCH-0008/3';
+declare namespace ns8='http://www.ech.ch/xmlns/eCH-0010/5';
+declare namespace ns4='http://www.ech.ch/xmlns/eCH-0044/4';
+//ns3:personKnown</path><content>true</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="13fcf625-918f-4b42-8c97-63cf4e2282d0" name="Person umzugsberechtigt"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns5='http://www.ech.ch/xmlns/eCH-0007/5';
+declare namespace ns3='http://www.ech.ch/xmlns/eCH-0194/1';
+declare namespace ns7='http://www.ech.ch/xmlns/eCH-0185/1';
+declare namespace ns2='http://www.ech.ch/xmlns/eCH-0058/5';
+declare namespace ns6='http://www.ech.ch/xmlns/eCH-0011/8';
+declare namespace ns9='http://www.ech.ch/xmlns/eCH-0008/3';
+declare namespace ns8='http://www.ech.ch/xmlns/eCH-0010/5';
+declare namespace ns4='http://www.ech.ch/xmlns/eCH-0044/4';
+//ns3:moveAllowed</path><content>1</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XQuery Match" id="b9d079e3-6cd5-49b1-9672-c8c2ae3fb9e5" name="Keine mitumziehenden Personen"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns5='http://www.ech.ch/xmlns/eCH-0007/5';
+declare namespace ns3='http://www.ech.ch/xmlns/eCH-0194/1';
+declare namespace ns7='http://www.ech.ch/xmlns/eCH-0185/1';
+declare namespace ns2='http://www.ech.ch/xmlns/eCH-0058/5';
+declare namespace ns6='http://www.ech.ch/xmlns/eCH-0011/8';
+declare namespace ns9='http://www.ech.ch/xmlns/eCH-0008/3';
+declare namespace ns8='http://www.ech.ch/xmlns/eCH-0010/5';
+declare namespace ns4='http://www.ech.ch/xmlns/eCH-0044/4';
+count(//ns3:relatedPerson)</path><content>&lt;xml-fragment>0&lt;/xml-fragment></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.ech.ch/xmlns/eCH-0194/1/Personenregister-Service/handleDelivery"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
