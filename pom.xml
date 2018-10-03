@@ -108,11 +108,6 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <!-- Ablageort der Binding-Configuration-Datei
-                    noch zu pr�fen ob wir hier etwas customizen m�ssen -->
-                    <xjbSources>
-                        <xjbSource>src/main/resources/global.xjb</xjbSource>
-                    </xjbSources>
                     <!-- Ablageort der XML Schema-Definition -->
                     <sources>
                         <source>src/main/resources/eCH-0194-1-0.xsd</source>
