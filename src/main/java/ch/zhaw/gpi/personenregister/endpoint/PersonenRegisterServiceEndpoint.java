@@ -4,7 +4,7 @@ import ch.ech.xmlns.ech_0058._5.HeaderType;
 import ch.ech.xmlns.ech_0194._1.DeliveryType;
 import ch.ech.xmlns.ech_0194._1.InfoType;
 import ch.ech.xmlns.ech_0194._1.NegativeReportType;
-import ch.zhaw.gpi.personenregister.controller.PersonenRegisterController;
+import ch.zhaw.gpi.personenregister.controller.ResidentRegisterController;
 import ch.zhaw.gpi.personenregister.helpers.DateConversionHelper;
 import ch.zhaw.gpi.personenregister.helpers.DefaultHeaderHelper;
 import java.math.BigInteger;
@@ -38,7 +38,7 @@ public class PersonenRegisterServiceEndpoint {
      * erstellt
      */
     @Autowired
-    private PersonenRegisterController personenRegisterController;
+    private ResidentRegisterController personenRegisterController;
     
     @Autowired
     private DefaultHeaderHelper defaultHeaderHelper;

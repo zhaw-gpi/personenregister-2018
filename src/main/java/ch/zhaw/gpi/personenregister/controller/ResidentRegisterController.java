@@ -7,12 +7,11 @@ import ch.ech.xmlns.ech_0194._1.DeliveryType;
 import ch.ech.xmlns.ech_0194._1.PersonMoveResponse;
 import ch.zhaw.gpi.personenregister.entities.ResidentEntity;
 import ch.zhaw.gpi.personenregister.helpers.DateConversionHelper;
-import ch.zhaw.gpi.personenregister.repository.PersonenRegisterRepository;
 import java.math.BigInteger;
 import java.util.List;
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import ch.zhaw.gpi.personenregister.repository.ResidentRepository;
 
 /**
  * Implementation für den PersonenRegisterService Diese Klasse enthält die
@@ -21,11 +20,11 @@ import org.springframework.stereotype.Component;
  * Verbindung zwischen Web Service-Schnittstelle und Process Engine her
  */
 @Component
-public class PersonenRegisterController {
+public class ResidentRegisterController {
 
     // Das für die Datenbankabfragen zuständige Repository wird als Dependency injiziert
     @Autowired
-    private PersonenRegisterRepository personenRegisterRepository;
+    private ResidentRepository residentRepository;
 
     /**
      * Implementation der Web Service-Operation handleDelivery
@@ -63,7 +62,7 @@ public class PersonenRegisterController {
          */
         
         // Repository-Methode aufrufen, welche die eigentliche Datenbankabfrage basierend auf dem Request durchführt und ein personsFound-Objekt zurückgibt
-        List<ResidentEntity> personsFound = personenRegisterRepository.findResidentByIdentificationParameters(
+        List<ResidentEntity> personsFound = residentRepository.findByFirstNameAndOfficialNameAndSexAndDateOfBirth(
                 personIdentification.getFirstName(),
                 personIdentification.getOfficialName(),
                 Integer.parseInt(personIdentification.getSex()),
@@ -85,27 +84,40 @@ public class PersonenRegisterController {
             // Diese eine Person als Variable speichern
             ResidentEntity resident = personsFound.get(0);
 
-            // Prüfen, ob die Person elektronisch den Umzug melden darf
+            // Die Boolean-Variable für moveAllowed (Umzugsmeldung elektronisch erlaubt) muss in eine Integer-Variable umgewandelt werden
+            BigInteger moveAllowedInteger = (resident.isMoveAllowed() ? BigInteger.valueOf(1) : BigInteger.valueOf(2));
+
+            // Die Integer-Variable kann dem Antwort-Objekt übergeben werden
+            personMoveResponse.setMoveAllowed(moveAllowedInteger);
+            
+            // Mitumziehende Personen ermitteln, falls die Person elektronisch den Umzug melden darf
             if (resident.isMoveAllowed()) {
-                // Die Boolean-Variable muss in eine Integer-Variable umgewandelt werden
-                BigInteger moveAllowedInteger = (resident.isMoveAllowed() ? BigInteger.valueOf(1) : BigInteger.valueOf(2));
+                // Alle Personen im gleichen Haushalt auslesen
+                if(resident.getResidentRelationEntity() != null){
+                    List<ResidentEntity> relatives = resident.getResidentRelationEntity().getResidentEntities();
+                    
+                    // Aus dieser Liste die eigene Person entfernen
+                    if(relatives != null){
+                        ResidentEntity toRemoveRelative = null;
+                        for(ResidentEntity relative : relatives){
+                            if(relative.getPersonId().equals(resident.getPersonId())){
+                                toRemoveRelative = relative;                            
+                            }
+                        }
+                        relatives.remove(toRemoveRelative);
+                    }
 
-                // Die Integer-Variable kann dem Antwort-Objekt übergeben werden
-                personMoveResponse.setMoveAllowed(moveAllowedInteger);
+                    // Wenn es nun noch weitere Personen gibt ...
+                    if (relatives != null && !relatives.isEmpty()) {
+                        // ... jedes Element der Liste wird einer Variable vom Typ ResidentEntity zugewiesen. 
+                        for (ResidentEntity relative : relatives) {
+                            // Hilfsmethode populateRelatedPerson aufrufen, um alle Angaben der Entity dem passenden Antwort-Objekt zuzuweisen
+                            PersonMoveResponse.RelatedPerson relatedPerson = this.populateRelatedPerson(relative, personIdentification.getLocalPersonId());
 
-                // Mitumziehende Personen auslesen
-                List<ResidentEntity> relatives = resident.getRelativesOnly();
-
-                // Wenn es umziehende Personen gibt ...
-                if (relatives != null && !relatives.isEmpty()) {
-                    // ... jedes Element der Liste wird einer Variable vom Typ ResidentEntity zugewiesen. 
-                    for (ResidentEntity relative : relatives) {
-                        // Hilfsmethode populateRelatedPerson aufrufen, um alle Angaben der Entity dem passenden Antwort-Objekt zuzuweisen
-                        PersonMoveResponse.RelatedPerson relatedPerson = this.populateRelatedPerson(relative, personIdentification.getLocalPersonId());
-                        
-                        // Die mitzuziehende Personen werden dem Antwort-Objekt übergeben, falls sie nicht null sind
-                        if(relatedPerson != null){
-                            personMoveResponse.getRelatedPerson().add(relatedPerson);
+                            // Die mitzuziehende Personen werden dem Antwort-Objekt übergeben, falls sie nicht null sind
+                            if(relatedPerson != null){
+                                personMoveResponse.getRelatedPerson().add(relatedPerson);
+                            }
                         }
                     }
                 }
