@@ -2,6 +2,7 @@ package ch.zhaw.gpi.personenregister.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +26,7 @@ public class ResidentEntity implements Serializable {
 
     // Automatisch generierte PersonenId
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long personId;
 
     // Vorname
@@ -53,10 +54,12 @@ public class ResidentEntity implements Serializable {
     @NotNull
     private Boolean moveAllowed;
 
-    // Referenz auf eine ResidentRelation-Entität, welche eine Liste aller im gleichen Haushalt wohnenden Personen enthält
-    @ManyToOne
-    @JoinColumn(name = "RESIDENT_RELATION_ID")
-    private ResidentRelationEntity residentRelationEntity;
+    // Referenz auf eine Haushalt-Entität, in welcher mehr als ein Einwohner leben können
+    // Dank CascadeType.ALL wird ein Haushalt gelöscht, wenn keine Einwohner mehr darin sind
+    // und umgekehrt wird ein Haushalt mitgespeichert, wenn ein Einwohner persistiert wird
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "HOUSEHOLD_ID")
+    private HouseHoldEntity houseHoldEntity;
 
     // GETTER und SETTER
     public Long getPersonId() {
@@ -107,11 +110,11 @@ public class ResidentEntity implements Serializable {
         this.moveAllowed = moveAllowed;
     }
 
-    public ResidentRelationEntity getResidentRelationEntity() {
-        return this.residentRelationEntity;
+    public HouseHoldEntity getHouseHoldEntity() {
+        return this.houseHoldEntity;
     }
 
-    public void setResidentRelationEntity(ResidentRelationEntity residentRelationEntity) {
-        this.residentRelationEntity = residentRelationEntity;
+    public void setHouseHoldEntity(HouseHoldEntity houseHoldEntity) {
+        this.houseHoldEntity = houseHoldEntity;
     }
 }

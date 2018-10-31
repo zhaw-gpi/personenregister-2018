@@ -93,8 +93,8 @@ public class ResidentRegisterController {
             // Mitumziehende Personen ermitteln, falls die Person elektronisch den Umzug melden darf
             if (resident.isMoveAllowed()) {
                 // Alle Personen im gleichen Haushalt auslesen
-                if(resident.getResidentRelationEntity() != null){
-                    List<ResidentEntity> relatives = resident.getResidentRelationEntity().getResidentEntities();
+                if(resident.getHouseHoldEntity()!= null){
+                    List<ResidentEntity> relatives = residentRepository.findByHouseHoldEntity(resident.getHouseHoldEntity());
                     
                     // Aus dieser Liste die eigene Person entfernen
                     if(relatives != null){

@@ -1,5 +1,6 @@
 package ch.zhaw.gpi.personenregister.repository;
 
+import ch.zhaw.gpi.personenregister.entities.HouseHoldEntity;
 import ch.zhaw.gpi.personenregister.entities.ResidentEntity;
 import java.util.Date;
 import java.util.List;
@@ -27,4 +28,12 @@ public interface ResidentRepository extends JpaRepository<ResidentEntity, Long> 
             Integer sex,
             Date dateOfBirth
     );
+    
+    /**
+     * Methode, um alle Personen im gleichen Haushalt zu erhalten
+     * 
+     * @param houseHoldEntity   Ein Haushalt-Objekt
+     * @return                  Liste der Personen im übergebenen Haushalt
+     */
+    public List<ResidentEntity> findByHouseHoldEntity(HouseHoldEntity houseHoldEntity);
 }

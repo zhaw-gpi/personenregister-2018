@@ -5,8 +5,8 @@
     <class>ch.zhaw.sml.iwi.gpi.musterloesung.personenregister.entities.Resident</class>
     <class>ch.zhaw.gpi.residentregister.entities.Resident</class>
     <class>ch.zhaw.gpi.residentregister.entities.ResidentRelation</class>
-    <class>ch.zhaw.gpi.personenregister.entities.ResidentRelationEntity</class>
     <class>ch.zhaw.gpi.personenregister.entities.ResidentEntity</class>
+    <class>ch.zhaw.gpi.personenregister.entities.HouseHoldEntity</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample"/>
       <property name="javax.persistence.jdbc.password" value="app"/>
