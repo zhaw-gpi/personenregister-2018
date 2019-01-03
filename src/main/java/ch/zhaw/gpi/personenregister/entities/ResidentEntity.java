@@ -66,55 +66,62 @@ public class ResidentEntity implements Serializable {
         return this.personId;
     }
 
-    public void setPersonId(Long personId) {
+    public ResidentEntity setPersonId(Long personId) {
         this.personId = personId;
+        return this;
     }
 
     public String getFirstName() {
         return this.firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public ResidentEntity setFirstName(String firstName) {
         this.firstName = firstName;
+        return this;
     }
 
     public String getOfficialName() {
         return this.officialName;
     }
 
-    public void setOfficialName(String officialName) {
+    public ResidentEntity setOfficialName(String officialName) {
         this.officialName = officialName;
+        return this;
     }
 
     public int getSex() {
         return this.sex;
     }
 
-    public void setSex(int sex) {
+    public ResidentEntity setSex(int sex) {
         this.sex = sex;
+        return this;
     }
 
     public Date getDateOfBirth() {
         return this.dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public ResidentEntity setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+        return this;
     }
 
     public boolean isMoveAllowed() {
         return this.moveAllowed;
     }
 
-    public void setMoveAllowed(boolean moveAllowed) {
+    public ResidentEntity setMoveAllowed(boolean moveAllowed) {
         this.moveAllowed = moveAllowed;
+        return this;
     }
 
     public HouseHoldEntity getHouseHoldEntity() {
         return this.houseHoldEntity;
     }
 
-    public void setHouseHoldEntity(HouseHoldEntity houseHoldEntity) {
+    public ResidentEntity setHouseHoldEntity(HouseHoldEntity houseHoldEntity) {
         this.houseHoldEntity = houseHoldEntity;
+        return this;
     }
 }
