@@ -4,14 +4,20 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Hauptklasse für die Personenregister-WebService-Applikation
+ * Hauptklasse mit Main-Methode, um die SpringBoot-Applikation zu starten
  * 
- * @SpringBootApplication stellt sicher, dass diese Klasse die SpringBoot-Applikation automatisch konfiguriert und vieles mehr. Details: https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using-boot-using-springbootapplication-annotation
+ * @author scep
  */
 @SpringBootApplication
 public class ResidentRegisterApplication {
 
+    /**
+     * Main-Methode
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
+        // Startet eine Spring-Boot-Applikation basierend auf dieser Klasse
         SpringApplication.run(ResidentRegisterApplication.class, args);
     }
 }
