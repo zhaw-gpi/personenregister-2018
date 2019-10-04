@@ -1,6 +1,5 @@
 package ch.zhaw.gpi.personenregister.entities;
 
-import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -22,7 +21,7 @@ import javax.validation.constraints.Size;
  * @author scep
  */
 @Entity(name = "Resident")
-public class ResidentEntity implements Serializable {
+public class ResidentEntity {
 
     // Automatisch generierte PersonenId
     @Id

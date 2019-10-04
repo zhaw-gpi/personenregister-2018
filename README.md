@@ -2,7 +2,7 @@
 
 > Autoren der Dokumentation: Björn Scheppler
 
-> Dokumentation letztmals aktualisiert: 3.1.2019
+> Dokumentation letztmals aktualisiert: 4.10.2019
 
 Dieses **Maven**-Projekt simuliert das kantonale Personenregister, welches Operationen über **SOAP** bereitstellt.
 
@@ -27,13 +27,14 @@ Dieses Projekt wird in der [**eUmzugPrototyp-Lösung**](https://github.com/zhaw-
 5. **Test-Fälle** als soapUI-Projekt (PersonenRegisterServiceTests-soapui-project.xml)
 
 ## Deployment
-1. **Erstmalig** oder bei Problemen ein **Clean & Build (Netbeans)**, respektive `mvn clean install` (Cmd) durchführen
-2. Bei Änderungen am POM-File oder bei **(Neu)kompilierungsbedarf** genügt ein **Build (Netbeans)**, respektive `mvn install`
+1. **Erstmalig** oder bei Problemen ein `mvn clean install` durchführen
+2. Bei Änderungen am POM-File oder bei **(Neu)kompilierungsbedarf** genügt ein `mvn install`
+3. Dabei werden auch mit einem Maven-Plugin die Java-Klassen aus den eCH-XSDs generiert.
 
 
 ## Nutzung
 ### SOAP-Client allgemein
-1. Für den **Start** ist ein **Run (Netbeans)**, respektive `java -jar .\target\NAME DES JAR-FILES.jar` (Cmd) erforderlich. Dabei wird Tomcat gestartet, die Datenbank erstellt/hochgefahren mit den Eigenschaften (application.properties) und die verschiedenen Resourcen-URL-Mappings vorgenommen.
+1. Für den **Start** ist ein `java -jar .\target\NAME DES JAR-FILES.jar` erforderlich. Dabei wird Tomcat gestartet, die Datenbank erstellt/hochgefahren mit den Eigenschaften (application.properties) und die verschiedenen Resourcen-URL-Mappings vorgenommen.
 2. Beim Starten werden die **Insert-Statements** in src\main\ressources\data.sql ausgeführt.
 3. Über http://localhost:8083/soap prüfen, ob die **WSDL** aufgerufen werden kann.
 4. In einem **SOAP-Client** (z.B. soapUI) mit dieser WSDL Requests bauen und aufrufen oder alternativ das bereits in src\test\resources\PersonenRegisterServiceTests-soapui-project.xml vorhandene soapUI-Projekt nutzen.
@@ -43,7 +44,7 @@ Dieses Projekt wird in der [**eUmzugPrototyp-Lösung**](https://github.com/zhaw-
 Hierzu den Anweisungen folgen in https://github.com/zhaw-gpi/eumzug-plattform-2018
 
 ### Fortgeschrittene Nutzung (Datenbank-Konsole)
-1. Um auf die Datenbankverwaltungs-Umgebung zuzugreifen, http://localhost:TOMCAT_PORT/console eingeben.
+1. Um auf die Datenbankverwaltungs-Umgebung zuzugreifen, http://localhost:8083/console eingeben.
 2. Anmeldung über:
     1. Benutzername sa
     2. Passwort: leer lassen

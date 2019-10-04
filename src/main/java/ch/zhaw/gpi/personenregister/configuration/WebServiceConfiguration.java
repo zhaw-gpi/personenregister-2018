@@ -38,8 +38,8 @@ public class WebServiceConfiguration {
      * @return 
      */
     @Bean
-    public ServletRegistrationBean dispatcherServletWebService() {
-        return new ServletRegistrationBean(new CXFServlet(), "/soap/*");
+    public ServletRegistrationBean<CXFServlet> dispatcherServletWebService() {
+        return new ServletRegistrationBean<CXFServlet>(new CXFServlet(), "/soap/*");
     }
 
     /**
